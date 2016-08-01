@@ -5,6 +5,7 @@
     <title>My Personal Site!</title>
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'controller/style.css' %}" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
   <body>
     <div class>
@@ -21,13 +22,15 @@
           <h2><a href="{% url 'about' %}">Hi</a></h2>
         </button>
       </div>
-      <div class="col-md-1"></div>
-      <a class="navbar-brand col-md-2" href="#">About</a>
-      <a class="navbar-brand col-md-2" href="#">Projects</a>
-      <a class="navbar-brand col-md-2" href="{% url 'resume' %}">Resume</a>
-      <a class="navbar-brand col-md-2" href="#">Blogs and Stuff</a>
-      <a class="navbar-brand col-md-2" href="#">Other</a>
-      <div class="col-md-1"></div>
+      <div class="container" style="font-weight: bold">
+        <div class="col-md-1"></div>
+        <a class="navbar-brand col-md-2" href="#">About</a>
+        <a class="navbar-brand col-md-2" href="#">Projects</a>
+        <a class="navbar-brand col-md-2" href="{% url 'resume' %}">Resume <i class="fa fa-file-pdf-o"></i></a>
+        <a class="navbar-brand col-md-2" href="#">Blog</a>
+        <a class="navbar-brand col-md-2" href="#">Other</a>
+        <div class="col-md-1"></div>
+      </div>
     </div>
   </div>
     {% block aboutcontent %}{% endblock %}
