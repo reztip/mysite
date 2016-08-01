@@ -24,11 +24,15 @@
       <div class="col-md-1"></div>
       <a class="navbar-brand col-md-2" href="#">About</a>
       <a class="navbar-brand col-md-2" href="#">Projects</a>
-      <a class="navbar-brand col-md-2" href="#">Resume</a>
+      <a class="navbar-brand col-md-2" href="{% url 'resume' %}">Resume</a>
       <a class="navbar-brand col-md-2" href="#">Blogs and Stuff</a>
       <a class="navbar-brand col-md-2" href="#">Other</a>
       <div class="col-md-1"></div>
     </div>
   </div>
+    {% block aboutcontent %}{% endblock %}
+    {% block projectscontent %}{% endblock %}
+    {% block blogscontent %}{% endblock %}
+    {% block othercontent %}{% endblock %}
   </body>
 </html>
