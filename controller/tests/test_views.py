@@ -22,3 +22,7 @@ class ViewTests(TestCase):
     def test_other_view_renders_other_template(self):
         response = self.client.get("/other")
         self.assertTemplateUsed("other.html")
+
+    def test_home_view_does_not_render_about_template(self):
+        response = self.client.get("/home")
+        self.assertTemplateNotUsed("other.html")
