@@ -6,4 +6,13 @@
 .navbar-brand {
   text-align: center;
   vertical-align: center;
+  color: black;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: -15px;
+  border: 2px solid black;
 }
