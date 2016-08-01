@@ -2,10 +2,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My personal site!</title>
+    <title>My Personal Site!</title>
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'controller/style.css' %}" />
   </head>
   <body>
-    <h1>Hello?</h1>
+    <div class="page-header">
+      <h2><a href="/" class="text-primary" style="color: black">AP's Site!</a></h2>
+    </div>
+
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <h2><a href="{% url 'about' %}">Hi</a></h2>
+        </button>
+      </div>
+      <div class="col-md-1"></div>
+      <a class="navbar-brand col-md-2" href="#">About</a>
+      <a class="navbar-brand col-md-2" href="#">Projects</a>
+      <a class="navbar-brand col-md-2" href="#">Resume</a>
+      <a class="navbar-brand col-md-2" href="#">Blogs and Stuff</a>
+      <a class="navbar-brand col-md-2" href="#">Other</a>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
   </body>
 </html>

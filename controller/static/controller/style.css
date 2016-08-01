@@ -1,3 +1,9 @@
-h2 {
-  color: blue;
+.page-header {
+  text-align: center;
+  vertical-align: center;
+}
+
+.navbar-brand {
+  text-align: center;
+  vertical-align: center;
 }

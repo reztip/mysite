@@ -17,5 +17,6 @@ class ProjectsView(generic.ListView):
 class OtherView(generic.ListView):
     template_name = "controller/other.html"
 
-def home(request):
-    return HttpResponse("Lorem ipsum, this is home!")
+class HomeView(generic.TemplateView):
+    template_name = "controller/home.html"
+    
