@@ -9,30 +9,20 @@
   </head>
   <body>
     <div class>
-      <img class="img-responsive img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" width="75" height="75" />
+      <img class="masthead img-responsive img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" />
     </div>
     <div class="page-header">
-      <h2><a href="/about" class="text-primary" style="color: black">AP's Site!</a></h2>
+      <h2><a href="{% url 'about' %}" class="text-primary" style="color: black">AP's Site!</a></h2>
+      <div class="navbar container btn-group-2" style="font-weight: bold">
+        <div class="col-md-1"></div>
+        <a href="{% url 'about'  %}" class="col-md-2 btn btn-info btn-lg">About</a>
+        <a href="{% url 'projects'  %}" class="col-md-2 btn btn-info btn-lg">Projects</a>
+        <a class="btn btn-info btn-lg col-md-2" href="{% url 'resume' %}">Resume  <i class="fa fa-file-pdf-o" style="color: black"></i></a>
+        <a href="{% url 'blog'  %}" class="col-md-2 btn btn-info btn-lg">Blog</a>
+        <a href="{% url 'other'  %}" class="col-md-2 btn btn-info btn-lg">Other</a>
+      </div>
     </div>
 
-  <div class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <h2><a href="{% url 'about' %}">Hi</a></h2>
-        </button>
-      </div>
-      <div class="container" style="font-weight: bold">
-        <div class="col-md-1"></div>
-        <a class="navbar-brand col-md-2" href="#">About</a>
-        <a class="navbar-brand col-md-2" href="#">Projects</a>
-        <a class="navbar-brand col-md-2" href="{% url 'resume' %}">Resume <i class="fa fa-file-pdf-o"></i></a>
-        <a class="navbar-brand col-md-2" href="#">Blog</a>
-        <a class="navbar-brand col-md-2" href="#">Other</a>
-        <div class="col-md-1"></div>
-      </div>
-    </div>
-  </div>
     {% block aboutcontent %}{% endblock %}
     {% block projectscontent %}{% endblock %}
     {% block blogscontent %}{% endblock %}
