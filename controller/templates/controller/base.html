@@ -1,18 +1,15 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
+<html lang=en"">
   <head>
     <title>My Personal Site!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'controller/style.css' %}" />
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
   <body>
-    <div class>
-      <img class="masthead img-responsive img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" />
-    </div>
-    <div class="page-header">
-      <h2><a href="{% url 'about' %}" class="text-primary" style="color: black">AP's Site!</a></h2>
       <div class="navbar container btn-group-2" style="font-weight: bold">
         <div class="col-md-1"></div>
         <a href="{% url 'about'  %}" class="col-md-2 btn btn-info btn-lg">About</a>
@@ -21,6 +18,9 @@
         <a href="{% url 'blog'  %}" class="col-md-2 btn btn-info btn-lg">Blog</a>
         <a href="{% url 'other'  %}" class="col-md-2 btn btn-info btn-lg">Other</a>
       </div>
+    <div class="page-header">
+      <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">AP's Site!</a></h1>
+      <img class="masthead img-responsive img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" />
     </div>
 
     {% block aboutcontent %}{% endblock %}
