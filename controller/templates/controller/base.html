@@ -19,8 +19,9 @@
         <a href="{% url 'other'  %}" class="col-md-2 btn btn-info btn-lg">Other</a>
       </div>
     <div class="page-header">
-      <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">AP's Site!</a></h1>
-      <img class="masthead img-responsive img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" />
+      <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">About Me</a></h1>
+      <!--<button class="btn btn-default" data-toggle="collapse" data-target="#mepic">Hide Me :(</button>-->
+      <img class="masthead img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" id="mepic" />
     </div>
 
     {% block aboutcontent %}{% endblock %}
@@ -28,4 +29,7 @@
     {% block blogscontent %}{% endblock %}
     {% block othercontent %}{% endblock %}
   </body>
+  <footer class="text-center">
+    hi.
+  </footer>
 </html>
