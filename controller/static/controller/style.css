@@ -1,3 +1,12 @@
+body {
+  background-color: MintCream;
+}
+
+.jumbotron {
+  background-color: LightSkyBlue;
+  border: 2px solid black;
+}
+
 .page-header {
   text-align: center;
   vertical-align: center;
@@ -32,4 +41,8 @@ img {
 .btn {
   margin-right: 10px;
 
+}
+
+.panel-footer {
+  text-align: center;
 }
