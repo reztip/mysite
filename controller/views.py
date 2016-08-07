@@ -24,7 +24,7 @@ class BlogView(generic.ListView):
 class ProjectsView(generic.ListView):
     template_name = "controller/projects.html"
 
-class OtherView(generic.ListView):
+class OtherView(generic.TemplateView):
     template_name = "controller/other.html"
 
 class HomeView(generic.TemplateView):

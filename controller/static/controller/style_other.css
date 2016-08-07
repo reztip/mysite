@@ -1,0 +1,18 @@
+body {
+  background-color: #2e2e1f;
+}
+
+.big {
+  color: white;
+  font-weight: bold;
+  font-family: georgia;
+  font-size: 7em;
+  text-align: center;
+  line-height: 6;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+

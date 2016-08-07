@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang=en"">
+<html lang="en">
   <head>
     <title>My Personal Site!</title>
     <meta charset="utf-8">
@@ -19,11 +19,11 @@
         <a href="{% url 'other'  %}" class="col-md-2 btn btn-primary btn-lg">Other</a>
       </div>
     <div class="page-header">
-      <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">About Me</a></h1>
-      <!--<button class="btn btn-default" data-toggle="collapse" data-target="#mepic">Hide Me :(</button>-->
+      <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">About</a></h1>
       <img class="masthead img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" id="mepic" />
     </div>
 
+    {% block homecontent %}{% endblock %}
     {% block aboutcontent %}{% endblock %}
     {% block projectscontent %}{% endblock %}
     {% block blogscontent %}{% endblock %}
