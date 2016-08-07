@@ -1,9 +1,23 @@
 {% load staticfiles %}
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'controller/style_other.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'controller/style_construction.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'flipclock/flipclock.css' %}" />
+    <script src="{% static 'flipclock/flipclock.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
   </head>
   <body>
-    <div class="big"><a href="{% url 'about' %}">Under Construction!</a></div>
+
+    <div class="clock">
+      <script type="text/javascript">
+        var clock = new FlipClock($('.clock'),3600, { countdown: true, autostart: true });
+      </script>
+
+    </div>
+    <div class="bigconstruction">
+      <a href="{% url 'about' %}"><h1>Under Construction!</h1></a>
+    </div>
+
+
   </body>
 </html>
