@@ -18,10 +18,10 @@ def resume_view(request):
 class ResumeView(generic.TemplateView):
     template_name = "controller/resume.html"
 
-class BlogView(generic.ListView):
+class BlogView(generic.TemplateView):
     template_name = "controller/blog.html"
 
-class ProjectsView(generic.ListView):
+class ProjectsView(generic.TemplateView):
     template_name = "controller/projects.html"
 
 class OtherView(generic.TemplateView):

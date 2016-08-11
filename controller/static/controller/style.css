@@ -16,9 +16,14 @@ body {
 img {
   display: block;
   margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: -15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   border: 2px solid black;
+}
+
+a img {
+  display: inline;
+  overflow: hidden;
 }
 
 .btn-group {

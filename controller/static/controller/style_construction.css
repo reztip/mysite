@@ -12,7 +12,11 @@ body {
   font-family: georgia;
   font-size: 3.5em;
   text-align: center;
-  line-height: 5;
+  line-height: 3em;
+  right: 50%;
+  bottom: 55%;
+  position: absolute;
+  transform: translate(50%, 50%);
 }
 
 .bigconstruction a {
