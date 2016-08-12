@@ -3,5 +3,5 @@ from django.contrib import admin
 
 from . import views as blog_views
 urlpatterns = [
-    url(r'^$', blog_views.index, name = 'index') 
-        ]
+    url(r'^$', blog_views.index, name = 'index'),
+    ]
