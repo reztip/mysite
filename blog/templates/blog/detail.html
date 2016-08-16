@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+</head>
+<body>
+  {% block blogscontent %} 
+  
+  <div class="jumbotron">
+    <h1 style="font-weight: bold">AP's Blog</h1>
+  </div>
+    <div class="container post">
+      <div class="page-header">
+        {% if  post.publish_date != None %}
+          <h2>{{ post.title }}
+          <p><small>Published: {{ post.publish_date }}</small></p>
+          </h2>
+        {% else %}
+          <h2>{{ post.title }}</h2>
+        {% endif %}
+      </div>
+      <br />
+      <textarea readonly class="post-text">{{ post.body }}</textarea>
+    </div>
+  {% endblock %}
+  <footer class="footer">The end.</footer>
+</body>

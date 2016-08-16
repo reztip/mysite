@@ -7,9 +7,12 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete = models.CASCADE )
     title = models.CharField(max_length = 70, blank = False)
     body = models.TextField(blank = False)
-    publish_date = models.DateField(blank = True)
+    publish_date = models.DateField(blank = True, null = True)
     created_date = models.DateField(auto_now_add = True)
 
     def publish(self):
         self.publish_date = timezone.now()
         self.save()
+
+    def __str__(self):
+        return self.title 
