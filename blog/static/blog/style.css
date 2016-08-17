@@ -14,6 +14,10 @@ p, small {
   text-align: center;
 }
 
+.pubdate {
+  text-align: center;
+}
+
 .edit {
   text-align: center;
   color: black;

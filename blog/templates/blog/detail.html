@@ -1,15 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<head>
-  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
-</head>
-<body>
+{% extends "blog/base.html" %}
+  {% load static %}
   {% block blogscontent %} 
   
-  <div class="jumbotron blogtitle">
-    <h1 style="font-weight: bold">AP's Blog</h1>
-  </div>
     <div class="container post">
       <div class="page-header">
         {% if  post.publish_date != None %}
@@ -19,11 +11,10 @@
         {% else %}
           <h2>{{ post.title }}</h2>
         {% endif %}
-          <p><small class="edit">Edit  </small><span class="edit glyphicon glyphicon-pencil"></span></p>
+        <a href="#" class="edit"><p><small>Edit  </small><span class="glyphicon glyphicon-pencil"></span></p></a>
       </div>
       <br />
       <textarea readonly class="post-text">{{ post.body }}</textarea>
     </div>
   {% endblock %}
   <footer class="footer">The end.</footer>
-</body>

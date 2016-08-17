@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+</head>
+<body>
+  <div class="jumbotron blogtitle">
+    <h1 style="font-weight: bold">AP's Blog</h1>
+  </div>
+  {% block blogscontent %}
+  {% endblock %}
+</body>
+</html>
