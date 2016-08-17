@@ -7,7 +7,7 @@
 <body>
   {% block blogscontent %} 
   
-  <div class="jumbotron">
+  <div class="jumbotron blogtitle">
     <h1 style="font-weight: bold">AP's Blog</h1>
   </div>
     <div class="container post">
@@ -19,6 +19,7 @@
         {% else %}
           <h2>{{ post.title }}</h2>
         {% endif %}
+          <p><small class="edit">Edit  </small><span class="edit glyphicon glyphicon-pencil"></span></p>
       </div>
       <br />
       <textarea readonly class="post-text">{{ post.body }}</textarea>

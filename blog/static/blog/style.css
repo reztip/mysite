@@ -10,10 +10,21 @@ h2 {
   text-align: center;
 }
 
-
-small { 
+p, small { 
   text-align: center;
 }
+
+.edit {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.edit:hover {
+  color: red;
+}
+
+
 
 .footer {
   width: 100%;
@@ -33,15 +44,24 @@ textarea {
   overflow-y: scroll;
   resize: none;
   display: block;
-  width: 80%;
-  height: 300px;
+  width: 90%;
+  height: 350px;
   margin-left: auto;
   margin-right: auto;
   background-color: floralwhite;
-  border-bottom: 2px solid grey;
+  border: 1px dashed grey;
 }
 
 .post-text {
   text-align: center;
   font-size: 1.5em;
+}
+
+.blogtitle {
+  background-color: lightblue;
+  color: white;
+}
+
+.blogtitle:hover {
+  color: beige;
 }
