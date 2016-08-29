@@ -5,7 +5,7 @@ import os
 
 class AboutView(generic.TemplateView):
     template_name = "controller/about.html"
-
+    
 def resume_view(request):
     with open('./controller/static/controller/resume.pdf', 'rb') as pdf:
         response = HttpResponse(content = pdf)

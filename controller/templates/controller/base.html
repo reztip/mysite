@@ -15,11 +15,11 @@
         <a href="{% url 'about'  %}" class="col-md-2 btn btn-primary btn-lg">About</a>
         <a href="{% url 'projects'  %}" class="col-md-2 btn btn-primary btn-lg">Projects</a>
         <a class="btn btn-primary btn-lg col-md-2" href="{% url 'resume' %}">Resume  <i class="fa fa-file-pdf-o" style="color: black"></i></a>
-        <a href="{% url 'blog'  %}" class="col-md-2 btn btn-primary btn-lg">Blog</a>
+        <a href="{% url 'blog:index' %}" class="col-md-2 btn btn-primary btn-lg">Blog</a>
         <a href="{% url 'other'  %}" class="col-md-2 btn btn-primary btn-lg">Other</a>
       </div>
     <div class="page-header">
-      <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">About</a></h1>
+      <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">Quite Literally, a Website Header</a></h1>
       <a href="http://www.kaiyukan.com/language/eng/" title="One of the world's best aquariums"><img class="masthead img-circle" src="{% static 'controller/images/me.jpeg' %}" alt=":3" id="mepic" /></a>
       <br />
     </div>
