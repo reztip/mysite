@@ -16,6 +16,7 @@ p, small {
 
 .pubdate {
   text-align: center;
+  font-weight: bold;
   display: block;
 }
 
@@ -23,6 +24,11 @@ p, small {
   text-align: center;
   color: black;
   font-weight: bold;
+}
+
+.editing{
+  margin-top: 20px;
+  vertical-align: middle;
 }
 
 .edit:hover {
@@ -47,6 +53,37 @@ p, small {
 }
 
 textarea {
+  vertical-align: middle;
+  padding: 30px 0;
+  overflow-y: scroll;
+  resize: none;
+  display: block;
+  width: 90%;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: floralwhite;
+  border: 1px dashed grey;
+  margin-bottom: 10px;
+}
+
+.post-text {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+
+.blogpost {
+  border-top: 1px solid grey;
+  margin-top: 10px;
+}
+
+.btn {
+  text-align: center;
+}
+
+.textarea {
   overflow-y: scroll;
   resize: none;
   display: block;
@@ -58,21 +95,40 @@ textarea {
   border: 1px dashed grey;
 }
 
-.post-text {
-  text-align: center;
-  font-size: 1.5em;
+.bottom-button {
+  position: absolute;
+  right: 200px;
+  margin-bottom: 20px;
 }
 
-.blogtitle {
-  background-color: lightblue;
+
+.nonedit {
+  border: 1px solid grey;
+}
+
+.jumbotron {
+  margin-top: -30px;
+  text-align: middle;
+}
+
+a .blogtitle {
   color: white;
+  font-weight: bold;
 }
 
 .blogtitle:hover {
-  color: beige;
+  color: lightgrey;
 }
 
-.blogpost {
-  border-top: 1px solid grey;
-  margin-top: 10px;
+nav {
+  color: black;
+  text-align: middle;
+  vertical-align: middle;
+  height: 5px;
+  display: flex;
+}
+
+
+.allposts {
+  margin-top: -30px;
 }

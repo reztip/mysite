@@ -1,14 +1,17 @@
 {% extends "blog/base.html" %}
 {% block blogscontent %}
+  <div class="allposts">
   {% for post in posts %}
     <div class="blogpost">
     {% if post.publish_date != None %}
-    <h1><a href="{% url 'blog:detail' pk=post.id %}">{{ post.title }}</a></h1> 
+    <h1><a class="titling" href="{% url 'blog:detail' pk=post.id %}">{{ post.title }}</a></h1> 
         <span class="pubdate">Published on {{ post.publish_date }}</span>
         <span class="page-header"></span>
     {% else %}
-    <h1><a href="{% url 'blog:detail' pk=post.id %}">{{ post.title }}</a></h1> 
+    <h1><a class="titling" href="{% url 'blog:detail' pk=post.id %}">{{ post.title }}</a></h1> 
+    <span class="pubdate">No known published date</span>
     </div>
     {% endif %}
   {% endfor %}
+  </div>
 {% endblock %}

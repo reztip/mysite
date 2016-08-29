@@ -11,9 +11,16 @@
         {% else %}
           <h2>{{ post.title }}</h2>
         {% endif %}
-        <a href="{% url 'blog:edit' pk=post.id  %}" class="edit"><p><small>Edit  </small><span class="glyphicon glyphicon-pencil"></span></p></a>
+        <form action="{% url 'blog:edit' pk=post.id %}" method="POST">
+        {% csrf_token %}
+        <br />
       </div>
+      <div class="container">
       <br />
-      <textarea readonly class="post-text nonedit">{{ post.body }}</textarea>
+      <textarea name="post_body" class="post-text editing">{{ post.body }}</textarea>
+        <button type="submit" class="btn btn-primary bottom-button">Save</button>
+        </form>
+      <br />
+      </div>
     </div>
   {% endblock %}

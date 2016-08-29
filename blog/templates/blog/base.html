@@ -6,8 +6,11 @@
   <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
 </head>
 <body>
-  <div class="jumbotron blogtitle">
-    <h1 style="font-weight: bold">AP's Blog</h1>
+  <nav class="navbar navbar-inverse">
+        <a class="navbar-brand" href="{% url 'about' %}">Home</a>
+  </nav>
+  <div class="jumbotron">
+    <a class="blogtitle" href="{% url 'blog:index' %}"><h1>AP's Blog</h1></a>
   </div>
   {% block blogscontent %}
   {% endblock %}
