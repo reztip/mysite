@@ -4,15 +4,15 @@
   
     <div class="container post">
       <div class="page-header">
+        <form action="{% url 'blog:edit' pk=post.id %}" method="POST">
+        {% csrf_token %}
         {% if  post.publish_date != None %}
-          <h2>{{ post.title }}
+        <h2><input class="titletextbox" type="text" name="post_title" value="{{ post.title }}"></input>
           <p><small>Published: {{ post.publish_date }}</small></p>
           </h2>
         {% else %}
-          <h2>{{ post.title }}</h2>
+        <h2><input class="titletextbox" type="text" name="post_title" value="{{ post.title }}"></input></h2>
         {% endif %}
-        <form action="{% url 'blog:edit' pk=post.id %}" method="POST">
-        {% csrf_token %}
         <br />
       </div>
       <div class="container">

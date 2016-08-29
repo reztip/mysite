@@ -15,8 +15,10 @@ def edit(request, pk):
     post = Post.objects.get(pk = pk)
     if request.method == "POST":
          new_text = request.POST.get('post_body', False)
-         if new_text:
+         new_title = request.POST.get('post_title', False)
+         if new_text and new_text:
              post.body = new_text
+             post.title = new_title
              post.save()
              return redirect(reverse('blog:detail', args=(post.id,)))
          else:

@@ -2,9 +2,7 @@ body {
   background-color: floralwhite;
 }
 
-h1 {
-  text-align: center;
-}
+h1 { text-align: center; }
 
 h2 {
   text-align: center;
@@ -131,4 +129,8 @@ nav {
 
 .allposts {
   margin-top: -30px;
+}
+
+.titletextbox {
+  text-align: center;
 }
