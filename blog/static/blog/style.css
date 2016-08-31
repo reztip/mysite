@@ -128,9 +128,17 @@ nav {
 
 
 .allposts {
-  margin-top: -30px;
+  margin-top: 20px;
 }
 
 .titletextbox {
   text-align: center;
+}
+
+.searchform {
+  color: black;
+  fontweight: bold;
+  font-family: sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
 }

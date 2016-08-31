@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.http import Http404
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, PostSearchForm
 
 def index(request):
     posts = Post.objects.all()
-    return render(request, 'blog/index.html', context = {'posts': posts})
+    # searchform  = PostSearchForm()
+    return render(request, 'blog/index.html', context = {
+        'posts': posts,
+        # 'searchform': searchform, 
+        })
 
 def detail(request, pk):
     post = Post.objects.get(pk = pk)
@@ -26,3 +31,14 @@ def edit(request, pk):
     else:
         return render(request, 'blog/edit.html', context = {'post': post})
 
+
+def search(request):
+    post_title = request.GET.get('post_title', False)
+    post_body = request.GET.get('post_body', False)
+    return render(request, 'blog/search.html', context = {
+        'post_title': post_title,
+        "post_body" : post_body
+        })
+
+
+     
