@@ -35,10 +35,38 @@ def edit(request, pk):
 def search(request):
     post_title = request.GET.get('post_title', False)
     post_body = request.GET.get('post_body', False)
-    return render(request, 'blog/search.html', context = {
-        'post_title': post_title,
-        "post_body" : post_body
-        })
+    if post_title:
+        post_title = post_title.strip()
+    if post_body:
+        post_body = post_body.strip()
 
+    if post_title or post_body:
+        if post_title and post_body:
+            titles = Post.objects.filter(title__icontains = post_title)
+            bodies = Post.objects.filter(body__icontains = post_body)
+            query = titles | bodies
+            return render(request, 'blog/search.html', context = {
+                "posts": query,
+                'post_title': post_title,
+                'post_body': post_body,
+                })
+
+        if post_body:
+            query = Post.objects.filter(body__icontains = post_body)
+            return render(request, 'blog/search.html', context = {
+                'post_title': post_title,
+                'post_body': post_body,
+                "posts": query
+                })
+
+        else:
+            query = Post.objects.filter(title__icontains = post_title)
+            return render(request, 'blog/search.html', context = {
+                'post_title': post_title,
+                'post_body': post_body,
+                "posts": query
+                })
+    else:
+        return render(request, 'blog/index.html')
 
      

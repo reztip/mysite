@@ -1,4 +1,11 @@
 {% extends "blog/base.html" %}
   {% load static %}
   {% block blogscontent %} 
+    {% if posts %}
+    {% for post in posts %}
+      <a href="{% url 'blog:detail' post.id %}"><h2>{{ post.title }}</h2></a>
+    {% endfor %}
+    {% else %}
+      <h2>No posts found.</h2>
+    {% endif %}
   {% endblock %}
