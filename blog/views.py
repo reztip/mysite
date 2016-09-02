@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from .models import Post
 from .forms import PostForm, PostSearchForm
 
@@ -67,6 +67,6 @@ def search(request):
                 "posts": query
                 })
     else:
-        return render(request, 'blog/index.html')
+        return HttpResponseRedirect(reverse("blog:index"))
 
      

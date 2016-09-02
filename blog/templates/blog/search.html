@@ -6,6 +6,10 @@
       <a href="{% url 'blog:detail' post.id %}"><h2>{{ post.title }}</h2></a>
     {% endfor %}
     {% else %}
+     <div class="container">
       <h2>No posts found.</h2>
+      <br />
+      <a href="{{ request.META.HTTP_REFERER }}"><div class="btn btn-primary" style="left: 46%; position: relative;">Go Back</div></a>
+      </div>
     {% endif %}
   {% endblock %}
