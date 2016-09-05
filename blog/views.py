@@ -3,13 +3,32 @@ from django.urls import reverse
 from django.http import Http404, HttpResponseRedirect
 from .models import Post
 from .forms import PostForm, PostSearchForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+def paginator_of(request, query):
+    posts = query #alias
+    paginator = Paginator(posts, 5)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages) 
+    return posts
 
 def index(request):
     posts = Post.objects.all()
-    # searchform  = PostSearchForm()
-    return render(request, 'blog/index.html', context = {
-        'posts': posts,
-        # 'searchform': searchform, 
+    paginator =  Paginator(posts, 5)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages) 
+
+    return render(request, 'blog/index.html', context = { 'posts': posts,
         })
 
 def detail(request, pk):
@@ -45,6 +64,7 @@ def search(request):
             titles = Post.objects.filter(title__icontains = post_title)
             bodies = Post.objects.filter(body__icontains = post_body)
             query = titles | bodies
+            query = paginator_of(request, query)
             return render(request, 'blog/search.html', context = {
                 "posts": query,
                 'post_title': post_title,
@@ -53,6 +73,7 @@ def search(request):
 
         if post_body:
             query = Post.objects.filter(body__icontains = post_body)
+            query = paginator_of(request, query)
             return render(request, 'blog/search.html', context = {
                 'post_title': post_title,
                 'post_body': post_body,
@@ -61,6 +82,7 @@ def search(request):
 
         else:
             query = Post.objects.filter(title__icontains = post_title)
+            query = paginator_of(request, query)
             return render(request, 'blog/search.html', context = {
                 'post_title': post_title,
                 'post_body': post_body,

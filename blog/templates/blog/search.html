@@ -12,4 +12,17 @@
       <a href="{{ request.META.HTTP_REFERER }}"><div class="btn btn-primary" style="left: 46%; position: relative;">Go Back</div></a>
       </div>
     {% endif %}
+  <div class="pagination well" style="left: 45%; position: relative">
+    <span class="step-links">
+      {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}">Prev</a>
+      {% endif %}
+      <span class="current">
+        Page <b>{{ posts.number }}</b> of <b>{{ posts.paginator.num_pages }}</b>
+      </span>
+      {% if posts.has_next %}
+      <a href="?post_title={{ post_title }}&post_body={{ post_body }}&page={{ posts.next_page_number  }}">next</a>
+      {% endif %}
+    </span>
+  </div>
   {% endblock %}
