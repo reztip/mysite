@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 import django.views.generic as generic
 import os
-
-class AboutView(generic.TemplateView):
-    template_name = "controller/about.html"
-    
+import controller
+"""
+###########################
+Functional views 
+###########################
+"""
 def resume_view(request):
     with open('./controller/static/controller/resume.pdf', 'rb') as pdf:
         response = HttpResponse(content = pdf)
@@ -14,15 +16,28 @@ def resume_view(request):
         return response
 
 
+def projects_view(request):
+    template_name = "controller/projects.html"
+    return render(request, template_name)
+
+def project_detail_view(request, name):
+    location = 'projects/{0}.html'.format(name)
+    return render_to_response(location)
+
+
+"""
+###########################
+Class views 
+###########################
+"""
+class AboutView(generic.TemplateView):
+    template_name = "controller/about.html"
 
 class ResumeView(generic.TemplateView):
     template_name = "controller/resume.html"
 
 class BlogView(generic.TemplateView):
     template_name = "controller/blog.html"
-
-class ProjectsView(generic.TemplateView):
-    template_name = "controller/projects.html"
 
 class OtherView(generic.TemplateView):
     template_name = "controller/other.html"
