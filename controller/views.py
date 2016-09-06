@@ -18,7 +18,10 @@ def resume_view(request):
 
 def projects_view(request):
     template_name = "controller/projects.html"
-    return render(request, template_name)
+    projects = ['titanic', 'digits']
+    return render(request, template_name, context = {
+        'projects': projects, 
+        })
 
 def project_detail_view(request, name):
     location = 'projects/{0}.html'.format(name)

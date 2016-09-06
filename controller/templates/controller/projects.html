@@ -1,4 +1,13 @@
-{% include "controller/under_construction.html" %}
+{% extends "controller/base.html" %}
 {% block projectscontent %}
-  
+<ul class="" style="text-align: vertical; left: 40%; position: relative">
+  <h2><b>Projects So Far</b></h2>
+   {% for project in projects %}
+   <div class="project-name">
+     <h3><li><a href="{% url 'project_detail' project %}">{{ project|title }}</a></li></h3>
+    {% endfor %}
+    <br />
+    </div>
+ </ul>
+
 {% endblock %}
