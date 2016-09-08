@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'controller.apps.ControllerConfig',
     'blog.apps.BlogConfig',
+    'finance.apps.FinanceConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -121,4 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static", "/controller/static/", '/blog/static/'),
+        ]
 MEDIA_ROOT = '/controller/static/projects/'
