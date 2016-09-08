@@ -1,6 +1,9 @@
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 import django.views.generic as generic
+from django.contrib.auth import authenticate, login
+
 import os
 import controller
 """
@@ -26,6 +29,23 @@ def projects_view(request):
 def project_detail_view(request, name):
     location = 'projects/{0}.html'.format(name)
     return render_to_response(location)
+
+def login_view(request):
+    if request.method == "GET":
+        return render(request, "controller/login.html")
+    else:
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username = username, password = password)
+        if user is not None:
+            login(request, user)
+            url = reverse('home')
+            return HttpResponseRedirect(url)
+        else:
+            return render(request, "controller/login.html", context = {
+                'failure': True
+                })
+
 
 
 """
