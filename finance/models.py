@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from django.db import models
-from django.contrib.auth import User
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 
 class Stock(models.Model):
@@ -12,10 +12,10 @@ class History(models.Model):
     pass
 
 class Transaction(models.Model):
-    date = models.DateTimeField(editable = False, auto_add_now = True)
-    stock = models.ForeignKeyField(Stock, blank = False, null = False)
+    date = models.DateTimeField(editable = False, auto_now_add = True)
+    stock = models.ForeignKey(Stock, blank = False, null = False)
     quantity = models.PositiveIntegerField( blank = False, null = False)
-    history = models.ForeignKeyField(History, on_delete = models.CASCADE)
+    history = models.ForeignKey(History, on_delete = models.CASCADE)
     price = models.DecimalField(max_digits = 9, 
             decimal_places = 2,
             blank = False,
