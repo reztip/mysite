@@ -8,6 +8,13 @@
 <body>
   <nav class="navbar navbar-inverse">
         <a class="navbar-brand" href="{% url 'about' %}">Home</a>
+        {% if request.user.id != None %}
+        <span class="navbar-brand">Logged in as <b style="color: white">{{ request.user }}</b></span>
+          <a class="navbar-brand" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a class="navbar-brand" href="{% url 'login' %}">Login</a>
+          
+        {% endif %}
   </nav>
   <div class="jumbotron">
     <a class="blogtitle" href="{% url 'blog:index' %}"><h1>AP's Blog</h1></a>
