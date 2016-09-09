@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 import django.views.generic as generic
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 import os
 import controller
@@ -46,6 +46,14 @@ def login_view(request):
                 'failure': True
                 })
 
+def logout_view(request):
+    if request.user:
+        logout(request)
+        url = reverse('blog:index')
+    else:
+        url = request.path
+    return HttpResponseRedirect(url)
+        
 
 
 """
