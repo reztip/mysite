@@ -1,7 +1,7 @@
 from decimal import Decimal
-
-from django.db import models
-from django.contrib.auth.models import User
+from django.forms  import ModelForm
+from django.db import models 
+from django.contrib.auth.models import User 
 from django.core.validators import MinValueValidator
 
 class Stock(models.Model):
@@ -51,4 +51,11 @@ class Account(models.Model):
   # each account has a history of transactions, deposits
   history = models.OneToOneField(History, on_delete = models.CASCADE)
 
+
+
+#----------------------------------- User Forms
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
 
