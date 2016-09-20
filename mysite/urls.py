@@ -6,6 +6,8 @@ from controller import views as controller_views
 urlpatterns = [
     # Home page.
     url(r'^$', controller_views.HomeView.as_view(), name = "home"),
+    url(r'^login$', controller_views.login_view, name = "login"),
+    url(r'^logout$', controller_views.logout_view, name = "logout"),
     # The aboutme page
     url(r'^about(me)?/$', controller_views.AboutView.as_view(),
         name = "about"),

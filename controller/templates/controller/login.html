@@ -5,7 +5,10 @@
     <p><strong>Sorry. your login info was incorrect!<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a></strong></p>
   </div>
 {% endif %}
-<form method="POST" action="{% url 'login'  %}">
+  <strong><h2 style="left: 47%; position: relative">Login</h2></strong>
+  <br />
+  <div class="container">
+  <form method="POST" action="{% url 'login'  %}">
   {% csrf_token %}
     <table>
     <tr><input name="username" class="form-control" type="text" placeholder="Username" /> 
@@ -13,5 +16,6 @@
     <tr><input name="password" class="form-control" type="password" placeholder="enter password" /> 
       <input type=submit style="visibility: hidden;" /></tr>
     </table>
-</form>
+  </form>
+  </div>
 {% endblock %}
