@@ -49,11 +49,20 @@ def login_view(request):
 def logout_view(request):
     if request.user:
         logout(request)
-        url = reverse('blog:index')
+        url = reverse('home')
     else:
         url = request.path
     return HttpResponseRedirect(url)
         
+def register_view(request):
+    if request.user:
+        return HttpResponseRedirect(reverse('login'))
+    if request.user:
+        logout(request)
+        url = reverse('home')
+    else:
+        url = request.path
+    return HttpResponseRedirect(url)
 
 
 """
