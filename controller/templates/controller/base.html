@@ -33,6 +33,11 @@
     {% block othercontent %}{% endblock %}
   </body>
   <div class="panel-footer">
-    <p>&copy; Alex Pitzer</p>
+        <p>&copy; Alex Pitzer</p>
+        {% if request.user.id != None %}
+        Logged in as <b style="color: black">{{ request.user }}</b> <a href="{% url 'logout' %}">(Logout)</a>
+        {% else %}
+          <a href="{% url 'login' %}"><h6>Login</h6></a> 
+        {% endif %}
   </div>
 </html>
