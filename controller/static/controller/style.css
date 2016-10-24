@@ -51,3 +51,10 @@ a img {
 .panel-footer {
   text-align: center;
 }
+
+#register {
+  color: white;
+}
+#register:hover {
+  color: white;
+}

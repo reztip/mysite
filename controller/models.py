@@ -1,5 +1,12 @@
 from django.db import models
+from django import forms
+from django.contrib.auth.models import User
 
 class Project(models.Model):
     name = models.CharField(max_length = 30)
     location = models.FileField(upload_to = 'projects/', default = 'under_construction.html')
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email', 'password']

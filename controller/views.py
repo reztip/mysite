@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 import django.views.generic as generic
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import AnonymousUser
+from .models import UserForm
 
 import os
 import controller
@@ -27,8 +29,8 @@ def projects_view(request):
         })
 
 def project_detail_view(request, name):
-    location = 'projects/{0}.html'.format(name)
-    return render_to_response(location)
+    url = 'projects/{0}.html'.format(name)
+    return render_to_response(url)
 
 def login_view(request):
     if request.method == "GET":
@@ -55,19 +57,26 @@ def logout_view(request):
     return HttpResponseRedirect(url)
         
 def register_view(request):
-    if request.user:
-        return HttpResponseRedirect(reverse('login'))
-    if request.user:
-        logout(request)
-        url = reverse('home')
+    # if no user and user is not anonymous, 
+    # Redirect home with no warning
+    if request.user and not request.user.is_anonymous():
+        return HttpResponseRedirect(reverse('home'))
     else:
-        url = request.path
-    return HttpResponseRedirect(url)
-
+        # GET => blank register form
+        if request.method == "GET":
+            userform  = UserForm()
+            # pass in an empty user form
+            return render(request, 'controller/register.html',
+                    context = {'form': userform})
+        # POST => sign up user, redirect home
+        elif request.method == "POST":
+            # sign up the user in the POST dict
+            # using the form fields
+            return HttpResponseRedirect(reverse('home'))
 
 """
 ###########################
-Class views 
+#      Class views        #
 ###########################
 """
 class AboutView(generic.TemplateView):
