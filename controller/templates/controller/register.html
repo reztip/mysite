@@ -1,4 +1,15 @@
 {% extends "controller/base.html" %}
 {% block othercontent %}
-
+<div id="registration">
+  <h2>Register, New User!</h2>
+  <!-- POST A USER CREATION FORM   --> 
+  <form method="POST">
+    {% csrf_token %}
+    <table style="padding: 1px">
+      {{ uform.as_table }}
+    </table>
+      <input type="submit" value="Submit" />
+  </form>
+    <br />
+</div>
 {% endblock %}

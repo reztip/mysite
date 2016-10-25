@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 import django.views.generic as generic
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import AnonymousUser
+from django.contrib.auth.models import AnonymousUser, User
 from .models import UserForm
 
 import os
@@ -67,7 +67,7 @@ def register_view(request):
             userform  = UserForm()
             # pass in an empty user form
             return render(request, 'controller/register.html',
-                    context = {'form': userform})
+                    context = {'uform': userform})
         # POST => sign up user, redirect home
         elif request.method == "POST":
             # sign up the user in the POST dict
