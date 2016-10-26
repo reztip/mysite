@@ -64,6 +64,7 @@ th, td {
 }
 
 .registration {
+  display: inline;
   position: absolute;
   margin: auto;
   top: 0;

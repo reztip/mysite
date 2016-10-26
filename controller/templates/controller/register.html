@@ -1,15 +1,15 @@
 {% extends "controller/base.html" %}
 {% block othercontent %}
-<div id="registration">
-  {% if errors != None %}
+{% if errors != None %}
   <div class="alert alert-danger fade in">
     <p><strong>Sorry. Registration failed: {{ errors }}<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a></strong></p>
   </div>
-  {% endif %}
+{% endif %}
+<div class="container col-md-12" id="registration" style="left: 25%">
   <br />
   <h2>Register, New User!</h2>
   <!-- POST A USER CREATION FORM   --> 
-  <form method="POST">
+  <form method="POST" style="text-align: left">
     {% csrf_token %}
     <table style="padding: 1px">
       {{ uform.as_table }}
