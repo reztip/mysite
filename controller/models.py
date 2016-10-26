@@ -7,7 +7,8 @@ class Project(models.Model):
     location = models.FileField(upload_to = 'projects/', default = 'under_construction.html')
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget = forms.PasswordInput)
+    password = forms.CharField(widget = forms.PasswordInput, required = True)
+    email = forms.CharField(max_length = 75, required = True)
     class Meta:
         model = User
-        fields = ['email', 'password']
+        fields = ['username', 'email', 'password']

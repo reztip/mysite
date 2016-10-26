@@ -56,7 +56,7 @@ def logout_view(request):
         url = request.path
     return HttpResponseRedirect(url)
         
-def register_view(request):
+def register_view(request, errors = None):
     # if no user and user is not anonymous, 
     # Redirect home with no warning
     if request.user and not request.user.is_anonymous():
@@ -67,15 +67,38 @@ def register_view(request):
             userform  = UserForm()
             # pass in an empty user form
             return render(request, 'controller/register.html',
-                    context = {'uform': userform})
+                    context = {'uform': userform,
+                        'errors': errors
+                        })
         # POST => sign up user, redirect home
         elif request.method == "POST":
+            username = request.POST['username']
+            email = request.POST['email']
+            password = request.POST['password']
+            new_user = User(username = username, 
+                    email = email, password = password)
             # sign up the user in the POST dict
             # using the form fields
-            return HttpResponseRedirect(reverse('home'))
+            try: 
+                try:
+                    # user exsists already
+                    usr = User.objects.get(username = username)
+                    return render(request, 
+                            'controller/register.html', context = 
+                            {'errors': "user exists already!"})
+                except Exception:
+                    pass
+                new_user.full_clean()
+                new_user.save()
+                login(request, new_user)
+                return HttpResponseRedirect(reverse('home'))
+            except Exception as e:
+                errors = str(e)
+                return render(request, "controller/register.html", context = {
+                    'errors': errors,
+                    })
 
-"""
-###########################
+""" ###########################
 #      Class views        #
 ###########################
 """

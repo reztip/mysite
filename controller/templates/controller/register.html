@@ -1,6 +1,12 @@
 {% extends "controller/base.html" %}
 {% block othercontent %}
 <div id="registration">
+  {% if errors != None %}
+  <div class="alert alert-danger fade in">
+    <p><strong>Sorry. Registration failed: {{ errors }}<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a></strong></p>
+  </div>
+  {% endif %}
+  <br />
   <h2>Register, New User!</h2>
   <!-- POST A USER CREATION FORM   --> 
   <form method="POST">
