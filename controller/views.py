@@ -1,8 +1,10 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
 import django.views.generic as generic
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.models import AnonymousUser, User
 from .models import UserForm
 
@@ -74,14 +76,21 @@ def register_view(request, errors = None):
         elif request.method == "POST":
             username = request.POST['username']
             email = request.POST['email']
-            password = request.POST['password']
+            password = request.POST['password1']
             new_user = User(username = username, 
                     email = email, password = password)
+            try:
+                validate_password(password, new_user)
+            except ValidationError as err:
+                errors = str(err)
+                return render(request, "controller/register.html", context = {
+                    'errors': errors,
+                    })
             # sign up the user in the POST dict
             # using the form fields
             try: 
                 try:
-                    # user exsists already
+                    # user exists already 
                     usr = User.objects.get(username = username)
                     return render(request, 
                             'controller/register.html', context = 
