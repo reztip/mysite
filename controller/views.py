@@ -1,6 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.core.mail import send_mail
 from django.core.exceptions import ValidationError
 import django.views.generic as generic
 from django.contrib.auth import authenticate, login, logout
@@ -99,6 +100,10 @@ def register_view(request, errors = None):
                     pass
                 new_user.full_clean()
                 new_user.save()
+                # Send the user a confirm-registration email
+                send_mail("Thank you for registering, {0}".format(username),
+           'Please remember your password, we have to reset it manually.',
+           'alexphi421@gmail.com', [email])
                 login(request, new_user)
                 return HttpResponseRedirect(reverse('home'))
             except Exception as e:
