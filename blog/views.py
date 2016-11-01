@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from .models import Post
 from .forms import PostForm, PostSearchForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -50,7 +50,6 @@ def edit(request, pk):
     else:
         return render(request, 'blog/edit.html', context = {'post': post})
 
-
 def search(request):
     post_title = request.GET.get('post_title', False)
     post_body = request.GET.get('post_body', False)
@@ -92,3 +91,21 @@ def search(request):
         return HttpResponseRedirect(reverse("blog:index"))
 
      
+
+def new_post(request):
+    if request.method == "POST":
+        user = request.user
+        pub_date = request.POST['publish_date']
+        title = request.POST['title']
+        body = request.POST[ 'body' ]
+
+        post = Post( author = user, publish_date = pub_date, 
+                title = title, body = body )
+        post.save()
+        return index(request)
+
+
+    # pform = PostForm()
+    return render(request, 'blog/new_post.html')
+
+
