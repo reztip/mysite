@@ -12,7 +12,7 @@
         <span class="navbar-brand">Logged in as <b style="color: white">{{ request.user }}</b></span>
           <a class="navbar-brand" href="{% url 'logout' %}">Logout</a>
         {% else %}
-          <a class="navbar-brand" href="{% url 'login' %}">Login</a>
+        <a class="navbar-brand" href="{% url 'login' %}?from={{ request.path|urlencode }}">Login</a>
           
         {% endif %}
   </nav>
