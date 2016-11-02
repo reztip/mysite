@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^projects/(?P<name>[a-z]+)/$', controller_views.project_detail_view, name = 'project_detail'),
     url(r'^other/$', controller_views.OtherView.as_view(), name = 'other'),
     url(r'^admin/', admin.site.urls),
-    url(r'^blogs?/', include('blog.urls', namespace = 'blog')),
+    url(r'^blogs?/', include('blog.urls', namespace = 'blog'), name = 'blog'),
     url(r'^finances?/', include('finance.urls', namespace = 'finance')),
+    url(r'^register/', controller_views.register_view, name = 'register'),
 ]
