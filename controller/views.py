@@ -37,26 +37,31 @@ def project_detail_view(request, name):
 
 def login_view(request):
     if request.method == "GET":
-        return render(request, "controller/login.html")
+        return render(request, "controller/login.html", context = {
+            'from': request.GET.get('from', None)
+            })
     else:
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username = username, password = password)
-        if user is not None:
+        if user is not None and not user.is_anonymous():
             login(request, user)
-            url = reverse('home')
+            url = request.GET.get('from', 'home')
+            if 'blog' in url:
+                url = 'blog:index'
+                url = reverse(url)
             return HttpResponseRedirect(url)
         else:
             return render(request, "controller/login.html", context = {
                 'failure': True
                 })
 
-def logout_view(request):
-    if request.user:
+def logout_view(request, input_path = None):
+    if not request.user.is_anonymous() and request.user:
         logout(request)
-        url = reverse('home')
+        url = reverse('blog:index')
     else:
-        url = request.path
+        url = reverse('home')
     return HttpResponseRedirect(url)
         
 def register_view(request, errors = None):
