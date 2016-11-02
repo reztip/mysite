@@ -18,7 +18,7 @@ def paginator_of(request, query):
     return posts
 
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-publish_date')
     paginator =  Paginator(posts, 5)
     page = request.GET.get('page')
     try:
@@ -33,10 +33,17 @@ def index(request):
 
 def detail(request, pk):
     post = Post.objects.get(pk = pk)
-    return render(request, 'blog/detail.html', context = {'post': post})
+    author = post.author
+    show_edit_button = (request.user == author)
+    return render(request, 'blog/detail.html', context = {'post': post, 
+        'allow_edit' : show_edit_button, 'author': author})
 
 def edit(request, pk):
     post = Post.objects.get(pk = pk)
+    if request.user != post.author:
+        return redirect('blog:index')
+
+    ctxt = {'post': post, 'author': post.author}
     if request.method == "POST":
          new_text = request.POST.get('post_body', False)
          new_title = request.POST.get('post_title', False)
@@ -46,9 +53,9 @@ def edit(request, pk):
              post.save()
              return redirect(reverse('blog:detail', args=(post.id,)))
          else:
-            return render(request, 'blog/edit.html', context = {'post': post})
+            return render(request, 'blog/edit.html', context = ctxt)
     else:
-        return render(request, 'blog/edit.html', context = {'post': post})
+            return render(request, 'blog/edit.html', context = ctxt)
 
 def search(request):
     post_title = request.GET.get('post_title', False)

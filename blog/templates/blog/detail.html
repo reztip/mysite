@@ -6,12 +6,17 @@
       <div class="page-header">
         {% if  post.publish_date != None %}
           <h2>{{ post.title }}
+            <br />
+            <br />
+          <p><small><b>Post by {{ author }}<b></small></p>
           <p><small>Published: {{ post.publish_date }}</small></p>
           </h2>
         {% else %}
           <h2>{{ post.title }}</h2>
         {% endif %}
+        {% if allow_edit %}
         <a href="{% url 'blog:edit' pk=post.id  %}" class="edit"><p><small>Edit  </small><span class="glyphicon glyphicon-pencil"></span></p></a>
+        {% endif %}
       </div>
       <br />
       <textarea readonly class="post-text nonedit">{{ post.body }}</textarea>
