@@ -46,10 +46,15 @@ def login_view(request):
         user = authenticate(username = username, password = password)
         if user is not None and not user.is_anonymous():
             login(request, user)
-            url = request.GET.get('from', 'home')
+            url = request.GET.get('from', 'about')
+            if url == '/':
+                url = 'home'
             if 'blog' in url:
                 url = 'blog:index'
-                url = reverse(url)
+            if 'finance' in url:
+                url = 'finance:index'
+
+            url = reverse(url)
             return HttpResponseRedirect(url)
         else:
             return render(request, "controller/login.html", context = {
