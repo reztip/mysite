@@ -38,15 +38,18 @@ def project_detail_view(request, name):
 def login_view(request):
     if request.method == "GET":
         return render(request, "controller/login.html", context = {
-            'from': request.GET.get('from', None)
+            'from': request.GET.get('from', None),
+            'next': request.GET.get('next', None),
             })
+    # else POST request
     else:
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username = username, password = password)
         if user is not None and not user.is_anonymous():
             login(request, user)
-            url = request.GET.get('from', 'about')
+            url = request.GET.get('from', None)
+            url = url or request.GET.get('next', 'about')
             if url == '/':
                 url = 'home'
             if 'blog' in url:

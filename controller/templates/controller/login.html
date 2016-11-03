@@ -11,7 +11,7 @@
   <br />
   <br />
   <div class="container">
-    <form method="POST" action="{% url 'login'  %}{% if from %}?from={{ from }}{% endif %}">
+    <form method="POST" action="{% url 'login'  %}{% if from %}?from={{ from }}{% endif %}{%if next %}{% if from %}&{% else %}?{% endif %}next={{ next }}{% endif %}">
   {% csrf_token %}
     <table>
     <tr><input name="username" class="form-control" type="text" placeholder="Username" /> 
