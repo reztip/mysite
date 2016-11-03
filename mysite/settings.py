@@ -126,3 +126,4 @@ STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static", "/controller/static/", '/blog/static/'),
         ]
 MEDIA_ROOT = '/controller/static/projects/'
+LOGIN_URL = '/login/'
