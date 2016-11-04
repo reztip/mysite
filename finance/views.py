@@ -6,6 +6,10 @@ from .models import UserForm
 
 @login_required
 def index(request):
+    logged_in = (not request.user.is_anonymous())
+    if not logged_in:
+       return render(request, 'finance/login.html') 
+
     return render(request, 'finance/home.html')
 
 def login(request):

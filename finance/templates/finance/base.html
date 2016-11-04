@@ -2,14 +2,45 @@
 <html>
   <head>
     {% load static %}
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta charset="utf-8">
      <title>Finance App</title>
      <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'  %}" >
+     <link rel="stylesheet" href="{% static 'css/style.css'  %}" >
      <script src="{% static 'jquery/jquery.min.js' %}"></script>
+
+
   </head>
 
    <body>
-     {% block content %}
+     <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <a class="navbar-brand" href="{% url 'finance:index' %}"  style="font-size: 2.0em">Finance</a>
+         </div>
+        <!-- basic navbar - name, basic links, etc.   -->
+         <ul class="nav navbar-nav">
+           <li class="active"><a href="{% url 'finance:index' %}">Home</a></li>
+           <li><a href="http://finance.yahoo.com">Markets</a></li>
+           <li><a href="https://personal.vanguard.com/us/insights/saving-investing/model-portfolio-allocations">Portfolios</a></li>
+           <li><a href="http://www.bloomberg.com">News</a></li>
+         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>log-in</a></li>
+        </ul>
+       </div>
+     </nav>
+      
+     <div class="container">
+       {% block content %}
 
-     {% endblock %}
+       {% endblock %}
+     </div>
+     <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+       <div class="container">
+         <div class="navbar-text">&copy; AP Financial Services (Not A Real Company, Inc.) </div>
+       </div>
+     </nav>
   </body>
 </html>
