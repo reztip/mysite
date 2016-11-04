@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.decorators import login_required 
+from controller.views import login_view as login_view_controller
 from .models import UserForm
 
 @login_required
 def index(request):
-    return HttpResponse("{0}".format(request.user))
+    return render(request, 'finance/home.html')
 
 def login(request):
-    pass
+    return login_view_controller(request)
 
 def logout(request):
     pass
