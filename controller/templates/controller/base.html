@@ -11,14 +11,15 @@
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
-  <body class="container" style="width: 64%; left: 18%; position: fixed">
-      <div class="navbar container btn-group-2" style="font-weight: bold">
+  <body class="container" style="width: 75%; left: 10%; position: fixed">
+      <div class="navbar container btn-group-2" style="font-weight: bold; left: 0%; text-align: center;">
         <div class="col-md-1"></div>
-        <a href="{% url 'about'  %}" class="col-md-2 btn btn-primary btn-lg">About</a>
+        <a href="{% url 'about'  %}" class="col-md-1 btn btn-primary btn-lg">About</a>
+        <a href="/finance" class="col-md-2 btn btn-primary btn-lg">Finance</a>
         <a href="{% url 'projects'  %}" class="col-md-2 btn btn-primary btn-lg">Projects</a>
         <a class="btn btn-primary btn-lg col-md-2" href="{% url 'resume' %}">Resume  <i class="fa fa-file-pdf-o" style="color: black"></i></a>
         <a href="{% url 'blog:index' %}" class="col-md-2 btn btn-primary btn-lg">Blog</a>
-        <a href="{% url 'other'  %}" class="col-md-2 btn btn-primary btn-lg">Other</a>
+        <a href="{% url 'other'  %}" class="col-md-1 btn btn-primary btn-lg">Other</a>
       </div>
     <div class="page-header">
       <h1 class="jumbotron text-center"><a href="{% url 'about' %}" class="text-primary" style="color: black">Practical Whimsy</a></h1>
